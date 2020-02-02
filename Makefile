@@ -21,6 +21,9 @@ docker_kill:
 docker_rm:
 	-docker rm springboot
 
+docker_push:
+	docker push springboot-test:1.0 vonnetworking/springboot-test:1.0
+
 docker_local: docker_kill docker_rm docker_local_build docker_local_run
 
 build_and_run_local: build docker_local
