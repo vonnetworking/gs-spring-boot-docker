@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-test-deployment
+  labels:
+    app: springboot-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-test
+  template:
+    metadata:
+      labels:
+        app: springboot-test
+    spec:
+      containers:
+      - name: springboot-test
+        image: vonnetworking/springboot-test:app-dev-v1.0.0
+        ports:
+        - containerPort: 8083
+---
+# The service, to access the deployment for the code you're developing
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: springboot-test
+  name: springboot-test
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 32730
+    port: 8083
+    protocol: TCP
+    targetPort: 8083
+  selector:
+    run: springboot-test
+  type: NodePort
