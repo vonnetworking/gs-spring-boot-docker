@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springboot-test
-        image: vonnetworking/springboot-test:app-dev-v1.0.0
+        image: vonnetworking/springboot-test:latest
         ports:
         - containerPort: 8083
 ---
