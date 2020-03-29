@@ -2,5 +2,6 @@ pipeline_version: master
 pipeline_version: master
 git_branch: master
 build_tool_gradle: gradle
+deploy_type: cdk
 gradle:
   placeholder: true
